@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Fugaz+One&display=swap"
+        rel="stylesheet">
+    <style>
+        .mystyle {
+            width: 400px;
+            height: 400px;
+            margin: 20px auto;
+            background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile1.uf.tistory.com%2Fimage%2F99AE9C365E3BB84D0ACDF2");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .input-group {
+            width: 500px;
+        }
+
+        .orderstyle {
+            width: 500px;
+            margin: 20px auto;
+        }
+
+        #title {
+            font-family: 'Black Han Sans', sans-serif;
+        }
+
+        #des {
+            font-family: 'Do Hyeon', sans-serif;
+        }
+
+        #order {
+            font-family: 'Fugaz One', cursive;
+            font-size: 25px;
+        }
+
+        .order_form {
+            font-family: 'Cute Font', cursive;
+            font-size: 19px;
+        }
+
+        .btn {
+            font-family: 'Do Hyeon', sans-serif;
+            font-size: 19px;
+        }
+
+        #btn_order {
+            width: 100px;
+            margin: 5px auto;
+        }
+    </style>
+    <script> 
+
+function make_order() {
+		// 1. 제목, 저자, 리뷰 내용을 가져옵니다.
+		// 2. 제목, 저자, 리뷰 중 하나라도 입력하지 않았을 경우 alert를 띄웁니다.
+		// 3. POST /reviews 에 저장을 요청합니다.
+    $.ajax({
+        type: "POST",
+        url:  "/order",
+        data: { },
+        success: function (response) {
+            if (response['result'] == 'success') {
+                alert(response['msg'] );
+                window.location.reload();
+            }
+        }
+    })
+}
+
+
+    function hey() {
+        alert('주문이 완료되었습니다.');
+    }
+    </script>
+</head>
+
+<body>
+    <div class="orderstyle">
+        <div class="mystyle"> </div>
+        <h1 id="title">펭수 인형&nbsp;&nbsp;&nbsp;<span style="font-size: medium" ;> 가격 : 58,000원(60cm), 95,000원(90cm)
+            </span> </h1>
+        <div id="des">
+            펭하! <br>
+            너무나도 귀여운 자이언트 펭수 인형을 만나보세요! <br>
+            남극에서 온 우리 펭수를 이제는 귀여운 인형으로 항상 만나보세요!
+        </div>
+        <br>
+        <p id="order">
+            Order
+        </p>
+        <div class="order_form">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">주문자 이름</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Size</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>Size 선택하세요.</option>
+                    <option value="1">60cm</option>
+                    <option value="2">90cm</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>수량을 선택하세요.</option>
+                    <option value="1">1개</option>
+                    <option value="2">2개</option>
+                    <option value="1">3개</option>
+                    <option value="2">4개</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+    <div id="btn_order">
+        <button onclick="hey()" type="button" class="btn btn-warning">주문하기</button>
+    </div>
+
+</body>
+
+</html>
